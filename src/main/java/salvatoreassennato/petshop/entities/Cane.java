@@ -1,5 +1,8 @@
 package salvatoreassennato.petshop.entities;
 
-public class Cane extends Animali {
+import jakarta.persistence.Entity;
+
+@Entity
+public class Cane extends Animale {
 
 }

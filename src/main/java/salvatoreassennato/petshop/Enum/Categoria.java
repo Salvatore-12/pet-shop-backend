@@ -1,4 +1,4 @@
-package salvatoreassennato.petshop.entities;
+package salvatoreassennato.petshop.Enum;
 
 public enum Categoria {
     Abbigliamento_cane,
