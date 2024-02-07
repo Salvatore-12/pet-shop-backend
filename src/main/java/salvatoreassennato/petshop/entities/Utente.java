@@ -27,6 +27,8 @@ public class Utente implements UserDetails {
     private String avatar;
     @Enumerated(EnumType.STRING)
     private Ruolo ruolo;
+//    OneToMany
+//    private Ordini ordini;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

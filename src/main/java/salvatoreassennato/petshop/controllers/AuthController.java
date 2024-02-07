@@ -11,6 +11,7 @@ import salvatoreassennato.petshop.payloads.UtenteDTO;
 import salvatoreassennato.petshop.payloads.UtenteLoginDTO;
 import salvatoreassennato.petshop.payloads.UtenteLoginResponseDTO;
 import salvatoreassennato.petshop.payloads.UtenteResponseDTO;
+import salvatoreassennato.petshop.security.JWTTools;
 import salvatoreassennato.petshop.service.AuthService;
 
 @RestController
@@ -18,6 +19,8 @@ import salvatoreassennato.petshop.service.AuthService;
 public class AuthController {
     @Autowired
     private AuthService authService;
+    @Autowired
+    private JWTTools jwtTools;
 
     @PostMapping("/login")
     public UtenteLoginResponseDTO login(@RequestBody UtenteLoginDTO body) {
@@ -33,7 +36,8 @@ public class AuthController {
             throw new BadRequestException(validation.getAllErrors());
         } else {
             Utente newUtente = authService.save(newUtentePayload);
-            return new UtenteResponseDTO(newUtente.getId());
+            String accessToken = jwtTools.createToken(newUtente);
+            return new UtenteResponseDTO(newUtente.getId(),accessToken);
         }
     }
 

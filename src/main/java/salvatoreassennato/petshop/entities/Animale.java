@@ -18,8 +18,8 @@ public abstract class Animale {
     @GeneratedValue
     @Setter(AccessLevel.NONE)
     protected UUID id;
-    protected String nome;
     protected String razza;
+    protected int età;
     protected double peso;
     @Enumerated(EnumType.STRING)
     protected Taglia taglia;

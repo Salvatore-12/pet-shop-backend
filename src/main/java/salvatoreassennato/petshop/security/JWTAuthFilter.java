@@ -20,7 +20,6 @@ import java.util.stream.Stream;
 
 @Component
 public class JWTAuthFilter extends OncePerRequestFilter {
-    private static final AntPathMatcher pathMatcher = new AntPathMatcher();
     @Autowired
     private JWTTools jwTTools;
     @Autowired
@@ -33,19 +32,18 @@ public class JWTAuthFilter extends OncePerRequestFilter {
         } else {
             String accessToken = authHeader.substring(7);
             jwTTools.verifyToken(accessToken);
-
             String id = JWTTools.extractIdFromToken(accessToken);
             Utente utente = utenteService.findById(UUID.fromString(id));
 
             Authentication authentication = new UsernamePasswordAuthenticationToken(utente, null, utente.getAuthorities());
             SecurityContextHolder.getContext().setAuthentication(authentication);
-
             filterChain.doFilter(request, response);
     }
     }
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
-        return new AntPathMatcher().match("/auth/**", request.getServletPath());
+        AntPathMatcher pathMatcher = new AntPathMatcher();
+        return pathMatcher.match("/auth/**", request.getServletPath());
     }
 
 }
