@@ -14,12 +14,8 @@ import java.util.List;
 import java.util.UUID;
 @Repository
 public interface ProdottoDAO extends JpaRepository<Prodotto,UUID> {
-//    @Query("SELECT m FROM Prodotto m WHERE m.tipoAnimale =: tipoAnimale")
-//    Page<Prodotto> findByProdottoPerAnimale(Pageable pageable, @Param("tipoAnimale") TipoAnimale tipoAnimale);
-//
-//    @Query("SELECT p FROM Prodotto p WHERE p.categoria = 'Cibo_umido' AND p.tipoAnimale = 'Cane'")
-//    List<Prodotto> findCiboUmidoForCane();
-//
-//    @Query("SELECT m FROM Prodotto m WHERE m.categoria =: categories")
-//    Page<Prodotto> findByCategoriaAndAnimals(Pageable pageable, @Param("categoria") Categoria categoria);
+
+    List<Prodotto> findByCategoriaAndTipoAnimale(Categoria categoria, TipoAnimale tipoAnimale);
+    List<Prodotto> findByNome(String nome);
+    List<Prodotto> findByNomeContaining(String parteDelNome);
 }

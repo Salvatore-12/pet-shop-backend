@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import salvatoreassennato.petshop.Enum.Categoria;
+import salvatoreassennato.petshop.Enum.TipoAnimale;
 import salvatoreassennato.petshop.entities.Prodotto;
 import salvatoreassennato.petshop.exceptions.NotFoundException;
 import salvatoreassennato.petshop.payloads.ProdottoDTO;
@@ -56,6 +57,20 @@ public class ProdottoService {
     public void findByIdAndDelete(UUID id) {
         Prodotto found = this.findById(id);
         prodottoDAO.delete(found);
+    }
+//query che mi ritorna tutti i prodotti del gatto in particolare solo i tirigraffi
+    public List<Prodotto> getProdottiPerGattoETiragraffi() {
+        return prodottoDAO.findByCategoriaAndTipoAnimale(Categoria.Tiragraffi, TipoAnimale.Gatto);
+    }
+    //query che mi ritorna tutti i prodotti del cane in particolare solo i guinzagli
+    public List<Prodotto> getProdottiPerCaneEGuinzaglio() {
+        return prodottoDAO.findByCategoriaAndTipoAnimale(Categoria.Guinzaglio, TipoAnimale.Cane);
+    }
+    public List<Prodotto> getProdottiByNome(String nome) {
+        return prodottoDAO.findByNome(nome);
+    }
+    public List<Prodotto> getProdottiByParteDelNome(String parteDelNome) {
+        return prodottoDAO.findByNomeContaining(parteDelNome);
     }
 
 }

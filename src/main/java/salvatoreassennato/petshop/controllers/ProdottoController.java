@@ -21,6 +21,30 @@ import java.util.UUID;
 public class ProdottoController {
     @Autowired
     private ProdottoService prodottoService;
+
+    @Autowired
+    public void setProdottoService(ProdottoService prodottoService) {
+        this.prodottoService = prodottoService;
+    }
+
+    @GetMapping("/prodotti-gatto-tiragraffi")
+    public List<Prodotto> getProdottiPerGattoETiragraffi() {
+        return prodottoService.getProdottiPerGattoETiragraffi();
+    }
+    @GetMapping("/prodotti-cane-guinzagli")
+    public List<Prodotto> getProdottiPerIlCaneEIlGuinzaglio() {
+        return prodottoService.getProdottiPerCaneEGuinzaglio();
+    }
+
+    @GetMapping("/prodotti-by-nome")
+    public List<Prodotto> getProdottiByNome(@RequestParam String nome) {
+        return prodottoService.getProdottiByNome(nome);
+    }
+    @GetMapping("/prodotti-per-parte-del-nome")
+    public List<Prodotto> getProdottiByParteDelNome(@RequestParam String parteDelNome) {
+        return prodottoService.getProdottiByParteDelNome(parteDelNome);
+    }
+
     @PreAuthorize("hasAuthority('Admin')")
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -32,4 +56,8 @@ public class ProdottoController {
             return prodottoService.save(body,id);
         }
     }
+
+
+
+
 }
