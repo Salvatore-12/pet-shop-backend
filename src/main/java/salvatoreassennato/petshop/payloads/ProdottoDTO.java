@@ -4,8 +4,10 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import salvatoreassennato.petshop.Enum.Categoria;
+import salvatoreassennato.petshop.Enum.TipoAnimale;
 
 public record ProdottoDTO(
+        String immagine,
         @NotEmpty(message="inserisci il nome")
         String nome,
         @NotEmpty(message="inserisci la descrizione")
@@ -13,5 +15,6 @@ public record ProdottoDTO(
         @NotNull(message="inserisci il prezzo")
         double prezzo,
         @NotEmpty(message="metti la categoria")
-        Categoria categoria) {
+        Categoria categoria,
+        TipoAnimale tipoAnimale) {
 }

@@ -3,6 +3,7 @@ package salvatoreassennato.petshop.entities;
 import jakarta.persistence.*;
 import lombok.*;
 import salvatoreassennato.petshop.Enum.Categoria;
+import salvatoreassennato.petshop.Enum.TipoAnimale;
 
 import java.util.UUID;
 @Entity
@@ -21,10 +22,9 @@ public class Prodotto {
     private double prezzo;
     @Enumerated(EnumType.STRING)
     private Categoria categoria;
-//    @Enumerated(EnumType.STRING)
-//    private TipoAnimali tipoAnimali;
-    @ManyToOne
-    @JoinColumn(name="animal_id")
-    private Animale animaleAssociato;
+    @Enumerated(EnumType.STRING)
+    private TipoAnimale tipoAnimale;
+
+
 
 }

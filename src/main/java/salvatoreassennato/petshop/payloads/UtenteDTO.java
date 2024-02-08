@@ -3,6 +3,7 @@ package salvatoreassennato.petshop.payloads;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
+import salvatoreassennato.petshop.Enum.Ruolo;
 
 public record UtenteDTO(@NotEmpty(message="nome obbligatorio!")
                         @Size(min=4,max=25,message="il nome deve essere almeno di 4 caratteri e non più di 25!")
@@ -15,5 +16,7 @@ public record UtenteDTO(@NotEmpty(message="nome obbligatorio!")
                         String email,
                         @NotEmpty(message = "la password è obbligatorio!")
                          @Size(min=4,max=25,message="la password deve avere un minimo di 4 carateri e un massino 25!")
-                        String password) {
+                        String password,
+                        Ruolo ruolo,
+                        String avatar) {
 }

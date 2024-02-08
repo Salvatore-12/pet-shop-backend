@@ -15,37 +15,39 @@ import salvatoreassennato.petshop.security.JWTTools;
 @Service
 public class AuthService {
     @Autowired
-    private PasswordEncoder bcrypt;
+    private UtenteService utenteService;
     @Autowired
-    private JWTTools jwTTools;
+    private JWTTools jwtTools;
     @Autowired
     private UtenteDAO utenteDao;
     @Autowired
-    private UtenteService utenteService;
+    private PasswordEncoder bcrypt;
 
-    public String authenticateUtente(UtenteLoginDTO body) {
-        Utente utente = utenteService.findByEmail(body.email());
-        if (bcrypt.matches(body.password(), utente.getPassword())) {
-            return jwTTools.createToken(utente);
-        } else {
-            throw new UnauthorizedException("Credenziali non valide!!");
+    public String authenticator(UtenteLoginDTO body)
+    {
+        Utente utente= utenteService.findByEmail(body.email());
+        if(bcrypt.matches(body.password(),utente.getPassword()))
+        {
+            return jwtTools.createToken(utente);
+        }
+        else
+        {
+            throw new UnauthorizedException("password errata");
         }
     }
-
-    public Utente save(UtenteDTO body) {
-        utenteDao.findByEmail(body.email()).ifPresent(user -> {
-            throw new BadRequestException("questa email " + user.getEmail() + " è gia in uso");
+    public Utente save(UtenteDTO body)
+    {
+        utenteDao.findByEmail(body.email()).ifPresent(user ->
+        {
+            throw new BadRequestException("L'email "+ user.getEmail() + " è già in uso");
         });
-        utenteDao.findBynome(body.nome()).ifPresent(user -> {
-            throw new BadRequestException("questo nome" + user.getNome() + " è gia in uso!");
-        });
-        Utente newUtente = new Utente();
-        newUtente.setNome(body.nome());
-        newUtente.setCognome(body.cognome());
-        newUtente.setEmail(body.email());
-        newUtente.setPassword(bcrypt.encode(body.password()));
-        newUtente.setRuolo(Ruolo.Utente);
-        newUtente.setAvatar("https://ui-avatars.com/api/?name=" + body.nome() + "+" + body.cognome());
-        return utenteDao.save(newUtente);
+        Utente newuser=new Utente();
+        newuser.setNome(body.nome());
+        newuser.setCognome(body.cognome());
+        newuser.setPassword(bcrypt.encode(body.password()));
+        newuser.setEmail(body.email());
+        newuser.setAvatar("ifhewiofofnewofbewofeowbfoiewbf");
+        newuser.setRuolo(Ruolo.Utente);
+        return utenteDao.save(newuser);
     }
 }

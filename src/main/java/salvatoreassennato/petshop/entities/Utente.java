@@ -1,5 +1,6 @@
 package salvatoreassennato.petshop.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -16,6 +17,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@JsonIgnoreProperties({"password","authorities","AccountNonExpired","enabled", "accountNonLocked","credentialsNonExpired"})
 public class Utente implements UserDetails {
     @Id
     @GeneratedValue
@@ -27,8 +29,7 @@ public class Utente implements UserDetails {
     private String avatar;
     @Enumerated(EnumType.STRING)
     private Ruolo ruolo;
-//    OneToMany
-//    private Ordini ordini;
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

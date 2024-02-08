@@ -27,8 +27,8 @@ public class UtenteService {
         return utenteDAO.findAll(pageable);
     }
 
-    public  Utente findById(UUID userId){
-        return utenteDAO.findById(userId).orElseThrow(()->new NotFoundException(userId));
+    public  Utente findById(UUID utenteId){
+        return utenteDAO.findById(utenteId).orElseThrow(()->new NotFoundException(utenteId));
     }
 
     public Utente userUpdate(UUID userId,Utente body){
@@ -43,8 +43,8 @@ public class UtenteService {
     }
 
 
-    public void userDelete(UUID userId){
-        Utente delete=this.findById(userId);
+    public void userDelete(UUID utenteId){
+        Utente delete=this.findById(utenteId);
         utenteDAO.delete(delete);
     }
 
@@ -52,8 +52,8 @@ public class UtenteService {
         return utenteDAO.findByEmail(email).orElseThrow(()-> new NotFoundException("Utente con email " + email + " non trovato..."));
     }
 
-    public  String uploadImage(MultipartFile file, UUID userId) throws IOException {
-        Utente found = this.findById(userId);
+    public  String uploadImage(MultipartFile file, UUID utenteId) throws IOException {
+        Utente found = this.findById(utenteId);
         String url = (String) cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap()).get("url");
         found.setAvatar(url);
         utenteDAO.save(found);
