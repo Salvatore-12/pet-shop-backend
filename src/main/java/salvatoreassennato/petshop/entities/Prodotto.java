@@ -25,6 +25,12 @@ public class Prodotto {
     @Enumerated(EnumType.STRING)
     private TipoAnimale tipoAnimale;
 
-
-
+    public Prodotto(String immagine, String nome, String descrizione, double prezzo, Categoria categoria, TipoAnimale tipoAnimale) {
+        this.immagine = immagine;
+        this.nome = nome;
+        this.descrizione = descrizione;
+        this.prezzo = prezzo;
+        this.categoria = categoria;
+        this.tipoAnimale = tipoAnimale;
+    }
 }
