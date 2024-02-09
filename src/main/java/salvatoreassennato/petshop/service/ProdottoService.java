@@ -72,5 +72,9 @@ public class ProdottoService {
     public List<Prodotto> getProdottiByParteDelNome(String parteDelNome) {
         return prodottoDAO.findByNomeContaining(parteDelNome);
     }
+    public List<Prodotto> getProdottoFiltratoPerPrezzo(double prezzoMinimo,double prezzoMassimo) {
+        return prodottoDAO.findByPrezzoBetween(prezzoMinimo,prezzoMassimo);
+    }
+
 
 }

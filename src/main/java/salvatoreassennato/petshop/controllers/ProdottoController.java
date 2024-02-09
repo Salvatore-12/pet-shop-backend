@@ -44,6 +44,12 @@ public class ProdottoController {
     public List<Prodotto> getProdottiByParteDelNome(@RequestParam String parteDelNome) {
         return prodottoService.getProdottiByParteDelNome(parteDelNome);
     }
+    @GetMapping("/prodotto_prezzo_min_max")
+    public List<Prodotto> getProdottoFiltrato() {
+        double prezzoMinimo = 20.00;
+        double prezzoMassimo = 40.00;
+        return prodottoService.getProdottoFiltratoPerPrezzo(prezzoMinimo, prezzoMassimo);
+    }
 
     @PreAuthorize("hasAuthority('Admin')")
     @PostMapping

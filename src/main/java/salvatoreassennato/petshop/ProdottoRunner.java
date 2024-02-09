@@ -100,12 +100,12 @@ public class ProdottoRunner implements CommandLineRunner {
         Prodotto prodottoCucciaGatto4= new Prodotto("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSxfi-PznHbi0LzsG98wCUENd8TUZMxVx_rA&usqp=CAU","Cuccia In Legno Con Balconcino per gatti","comoda cuccia in legno per il gatto",90.00,Categoria.CuccieELettini,TipoAnimale.Gatto);
         Prodotto prodottoLettinoGatto1= new Prodotto("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMoJJZE_Ta8EBEkCROknzHo0PwSz4iJg0-7A&usqp=CAU","Lettino Per Gatto","comodo lettino per gatto",58.00,Categoria.CuccieELettini,TipoAnimale.Gatto);
         Prodotto prodottoLettinoGatto2= new Prodotto("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTnF7dHK9PuhFXldZ5GXYHgvfDOonXZkza_Q&usqp=CAU","Lettino Per Gatto Con Cusino In Peluche","comodo lettino per gatto con cusino",50.00,Categoria.CuccieELettini,TipoAnimale.Gatto);
-       prodottoDAO.save(prodottoCucciaGatto1);
-       prodottoDAO.save(prodottoCucciaGatto2);
-       prodottoDAO.save(prodottoCucciaGatto3);
-       prodottoDAO.save(prodottoCucciaGatto4);
-       prodottoDAO.save(prodottoLettinoGatto1);
-       prodottoDAO.save(prodottoLettinoGatto2);
+//       prodottoDAO.save(prodottoCucciaGatto1);
+//       prodottoDAO.save(prodottoCucciaGatto2);
+//       prodottoDAO.save(prodottoCucciaGatto3);
+//       prodottoDAO.save(prodottoCucciaGatto4);
+//       prodottoDAO.save(prodottoLettinoGatto1);
+//       prodottoDAO.save(prodottoLettinoGatto2);
 
 
 

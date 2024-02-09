@@ -18,4 +18,5 @@ public interface ProdottoDAO extends JpaRepository<Prodotto,UUID> {
     List<Prodotto> findByCategoriaAndTipoAnimale(Categoria categoria, TipoAnimale tipoAnimale);
     List<Prodotto> findByNome(String nome);
     List<Prodotto> findByNomeContaining(String parteDelNome);
+    List<Prodotto> findByPrezzoBetween(double prezzoMinimo, double prezzoMassimo);
 }

@@ -13,17 +13,19 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class CarrelloItemProdotti {
+public class CarrelloProdotto {
     @Id
     @GeneratedValue
     private UUID id;
+    @ManyToOne
+    @JoinColumn(name = "carrello_id")
+    private Carrello carrello;
     @OneToMany
-    @JoinColumn(name="prodotto_id")
+    @JoinColumn(name="carrello_item_id")
     private List<Prodotto> prodotti= new ArrayList<>();
-   @OneToOne
-   @JoinColumn(name="ordine_id")
-   private Ordine ordini;
-   @ManyToOne
-   @JoinColumn(name="utente_id")
-   private Utente utente;
+    @ManyToOne
+    @JoinColumn(name = "ordine_id")
+    private Ordine ordine;
+
+
 }

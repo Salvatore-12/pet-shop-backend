@@ -16,6 +16,9 @@ public class Ordine {
     private UUID id;
     @OneToOne
     @JoinColumn(name="carrello_id")
-    private CarrelloItemProdotti CarrelloItemProdotti;
+    private CarrelloProdotto CarrelloProdotti;
     private double pagamento;
+    @ManyToOne
+    @JoinColumn(name="utente_id")
+    private Utente utente;
 }
