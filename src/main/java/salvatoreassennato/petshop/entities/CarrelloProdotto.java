@@ -3,6 +3,7 @@ package salvatoreassennato.petshop.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -16,16 +17,14 @@ import java.util.UUID;
 public class CarrelloProdotto {
     @Id
     @GeneratedValue
-    private UUID id;
-    @ManyToOne
-    @JoinColumn(name = "carrello_id")
-    private Carrello carrello;
+    private UUID carrelloid;
     @OneToMany
     @JoinColumn(name="carrello_item_id")
     private List<Prodotto> prodotti= new ArrayList<>();
-    @ManyToOne
+    private LocalDateTime dataCreazione;
+    private double totale;
+    @OneToOne
     @JoinColumn(name = "ordine_id")
     private Ordine ordine;
-
 
 }

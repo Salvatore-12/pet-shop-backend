@@ -1,10 +1,10 @@
 package salvatoreassennato.petshop.service;
 
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 import salvatoreassennato.petshop.Enum.Categoria;
 import salvatoreassennato.petshop.Enum.TipoAnimale;
@@ -13,19 +13,28 @@ import salvatoreassennato.petshop.exceptions.NotFoundException;
 import salvatoreassennato.petshop.payloads.ProdottoDTO;
 import salvatoreassennato.petshop.repositories.ProdottoDAO;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 @Service
 public class ProdottoService {
+    private static final Logger logger = LoggerFactory.getLogger(ProdottoService.class);
     @Autowired
     private ProdottoDAO prodottoDAO;
 
 
-    public Page<Prodotto> getBill(int page, int size, String orderBy) {
-        if (size >= 100) size = 100;
-        Pageable pageable = PageRequest.of(page, size, Sort.by(orderBy));
-        return prodottoDAO.findAll(pageable);
+//    public Page<Prodotto> getProdotto(int page, int size, String orderBy) {
+//        if (size >= 100) size = 100;
+//        Pageable pageable = PageRequest.of(page, size, Sort.by(orderBy));
+//        return prodottoDAO.findAll(pageable);
+//
+//    }
+
+    public Page<Prodotto> aggiungiProdotto(Page<Prodotto> paginaProdotti, Prodotto prodotto) {
+        List<Prodotto> prodotti = new ArrayList<>(paginaProdotti.getContent());
+        prodotti.add(prodotto);
+        return new PageImpl<>(prodotti, paginaProdotti.getPageable(), paginaProdotti.getTotalElements());
     }
 
     public Prodotto findById(UUID id) {
@@ -40,8 +49,12 @@ public class ProdottoService {
         newprodotto.setPrezzo(body.prezzo());
         newprodotto.setCategoria(body.categoria());
         newprodotto.setTipoAnimale(body.tipoAnimale());
+        logger.info("Salvataggio del prodotto nel database: {}", newprodotto);
         return prodottoDAO.save(newprodotto);
+
+
     }
+
 
     public Prodotto findByIdAndUpdate(UUID id, ProdottoDTO body) {
         Prodotto found = this.findById(id);

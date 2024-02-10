@@ -13,10 +13,9 @@ import java.util.UUID;
 public class Ordine {
     @Id
     @GeneratedValue
-    private UUID id;
-    @OneToOne
-    @JoinColumn(name="carrello_id")
-    private CarrelloProdotto CarrelloProdotti;
+    private UUID idOrdine;
+    @OneToOne(mappedBy="ordine")
+    private CarrelloProdotto carrelloProdotti;
     private double pagamento;
     @ManyToOne
     @JoinColumn(name="utente_id")

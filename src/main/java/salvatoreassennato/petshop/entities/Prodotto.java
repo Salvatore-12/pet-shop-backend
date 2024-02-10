@@ -1,5 +1,6 @@
 package salvatoreassennato.petshop.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
 import salvatoreassennato.petshop.Enum.Categoria;
@@ -15,13 +16,20 @@ import java.util.UUID;
 public class Prodotto {
     @Id
     @GeneratedValue
-    private UUID id;
+    @JsonProperty("idProdotto")
+    private UUID idProdotto;
+    @JsonProperty("immagine")
     private String immagine;
+    @JsonProperty("nome")
     private String nome;
+    @JsonProperty("descrizione")
     private String descrizione;
+    @JsonProperty("prezzo")
     private double prezzo;
+    @JsonProperty("categoria")
     @Enumerated(EnumType.STRING)
     private Categoria categoria;
+    @JsonProperty("tipoAnimale")
     @Enumerated(EnumType.STRING)
     private TipoAnimale tipoAnimale;
 
