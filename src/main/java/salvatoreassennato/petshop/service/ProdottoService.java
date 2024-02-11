@@ -71,6 +71,14 @@ public class ProdottoService {
         Prodotto found = this.findById(id);
         prodottoDAO.delete(found);
     }
+
+    public Prodotto update(ProdottoDTO body, UUID id) {
+        return prodottoDAO.findByIdAndUpdate(id, body);
+    }
+
+    public void delete(UUID id) {
+        prodottoDAO.findByIdAndDelete(id);
+    }
 //query che mi ritorna tutti i prodotti del gatto in particolare solo i tirigraffi
     public List<Prodotto> getProdottiPerGattoETiragraffi() {
         return prodottoDAO.findByCategoriaAndTipoAnimale(Categoria.Tiragraffi, TipoAnimale.Gatto);

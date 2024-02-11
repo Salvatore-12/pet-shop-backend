@@ -63,6 +63,22 @@ public class ProdottoController {
         }
     }
 
+    @PutMapping("/{id}")
+    public Prodotto updateProdotto(@RequestBody ProdottoDTO body, @PathVariable UUID id, BindingResult validation) {
+        if (validation.hasErrors()) {
+            throw new BadRequestException(validation.getAllErrors());
+        } else {
+            return prodottoService.update(body, id);
+        }
+    }
+
+    @PreAuthorize("hasAuthority('Admin')")
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteProdotto(@PathVariable UUID id) {
+        prodottoService.delete(id);
+    }
+
 
 
 

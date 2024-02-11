@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import salvatoreassennato.petshop.Enum.Categoria;
 import salvatoreassennato.petshop.Enum.TipoAnimale;
 import salvatoreassennato.petshop.entities.Prodotto;
+import salvatoreassennato.petshop.payloads.ProdottoDTO;
 
 import java.util.List;
 import java.util.UUID;
@@ -19,4 +20,8 @@ public interface ProdottoDAO extends JpaRepository<Prodotto,UUID> {
     List<Prodotto> findByNome(String nome);
     List<Prodotto> findByNomeContaining(String parteDelNome);
     List<Prodotto> findByPrezzoBetween(double prezzoMinimo, double prezzoMassimo);
+
+    Prodotto findByIdAndUpdate(UUID id, ProdottoDTO body);
+
+    public void findByIdAndDelete(UUID id);
 }
