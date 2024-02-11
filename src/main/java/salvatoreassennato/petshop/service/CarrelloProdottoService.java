@@ -43,13 +43,11 @@ public class CarrelloProdottoService {
         newProductCart.setProdotti(prodottoList);
         newProductCart.setOrdine(ordineDAO.findById(idOrder).orElseThrow(() -> new NotFoundException(idOrder)));
         newProductCart.setDataCreazione(body.dataCreazione());
-        newProductCart.setTotale(body.totale());
         return carrelloProdottoDAO.save(newProductCart);
     }
     public CarrelloProdotto findByIdAndUpdate(UUID id, CarrelloProdottoDTO body) {
         CarrelloProdotto found = this.findById(id);
         found.setDataCreazione(body.dataCreazione());
-        found.setTotale(body.totale());
         return carrelloProdottoDAO.save(found);
     }
 
@@ -66,23 +64,21 @@ public class CarrelloProdottoService {
     }
 
     public CarrelloProdotto aggiungiProdottiACarrelloVuoto(UUID carrelloId, List<UUID> idProdotti) {
-        // Recupera il carrello
+        // Recupero il carrello
         CarrelloProdotto carrello = carrelloProdottoDAO.findById(carrelloId)
                 .orElseThrow(() -> new RuntimeException("Carrello non trovato con ID: " + carrelloId));
 
-        // Verifica se il carrello è vuoto
+        // Verifico se il carrello è vuoto
         if (carrello.getProdotti() == null) {
             carrello.setProdotti(new ArrayList<>());
         }
 
-        // Recupera i prodotti e aggiungili al carrello
+        // Recupero i prodotti e aggiungo al carrello
         for (UUID idProdotto : idProdotti) {
             Prodotto prodotto = prodottoDAO.findById(idProdotto)
                     .orElseThrow(() -> new RuntimeException("Prodotto non trovato con ID: " + idProdotto));
             carrello.getProdotti().add(prodotto);
         }
-
-        // Salva il carrello aggiornato nel database
         carrelloProdottoDAO.save(carrello);
         return carrello;
     }

@@ -19,10 +19,9 @@ public class CarrelloProdotto {
     @GeneratedValue
     private UUID carrelloid;
     @OneToMany
-    @JoinColumn(name="carrello_item_id")
+    @JoinColumn(name="carrello_id")
     private List<Prodotto> prodotti= new ArrayList<>();
     private LocalDateTime dataCreazione;
-    private double totale;
     @OneToOne
     @JoinColumn(name = "ordine_id")
     private Ordine ordine;

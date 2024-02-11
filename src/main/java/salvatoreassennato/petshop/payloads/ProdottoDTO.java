@@ -9,7 +9,10 @@ import org.slf4j.LoggerFactory;
 import salvatoreassennato.petshop.Enum.Categoria;
 import salvatoreassennato.petshop.Enum.TipoAnimale;
 
+import java.util.UUID;
+
 public record ProdottoDTO(
+        UUID id,
         String immagine,
         @NotEmpty(message="inserisci il nome")
         String nome,

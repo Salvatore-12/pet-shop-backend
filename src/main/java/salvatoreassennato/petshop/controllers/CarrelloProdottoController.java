@@ -21,8 +21,8 @@ public class CarrelloProdottoController {
     }
 
 
-@PostMapping("/{carrelloId}/aggiungi-prodotti")
-public CarrelloProdotto aggiungiProdottiACarrello(@PathVariable UUID carrelloId, @RequestBody List<UUID> idProdotti) {
+    @PostMapping("/{carrelloId}/aggiungi-prodotti")
+    public CarrelloProdotto aggiungiProdottiACarrello(@PathVariable UUID carrelloId, @RequestBody List<UUID> idProdotti) {
     return carrelloProdottoService.aggiungiProdottiACarrelloVuoto(carrelloId,idProdotti);
-}
+    }
 }

@@ -56,19 +56,19 @@ public class ProdottoRunner implements CommandLineRunner {
         Prodotto prodottoPerIlCane10=new Prodotto("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHlzqVAdMaN5G7JZqxsoTvkNzMCh3-DYkuiQ&usqp=CAU","guinzaglio giallo in nylon","comodo guinzaglio per il nostro amico a quattro zampe",6.99,Categoria.Guinzaglio,TipoAnimale.Cane);
         Prodotto prodottoPerIlCane11=new Prodotto("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGGOmzra8_oB6hpTiX_mVH99zb1XsS7yXjkULAv-HlmdOHnLdtDHX7QYG06Kf48tSghwE&usqp=CAU","guinzaglio azzurro in nylon","comodo guinzaglio per il nostro amico a quattro zampe",5.00,Categoria.Guinzaglio,TipoAnimale.Cane);
         Prodotto prodottoPerIlCane12=new Prodotto("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjt_TAwazGrCKHJWNyGhi6FS0CVWbe2Y52-A&usqp=CAU","guinzaglio turchese in nylon","comodo guinzaglio per il nostro amico a quattro zampe",8.00,Categoria.Guinzaglio,TipoAnimale.Cane);
-//        prodottoDAO.save(prodottoPerIlCane1);
-//        prodottoDAO.save(prodottoPerIlCane2);
-//        prodottoDAO.save(prodottoPerIlCane3);
-//        prodottoDAO.save(prodottoPerIlCane4);
-//        prodottoDAO.save(prodottoPerIlCane5);
-//        prodottoDAO.save(prodottoPerIlCane6);
-//        prodottoDAO.save(prodottoPerIlCane6);
-//        prodottoDAO.save(prodottoPerIlCane7);
-//        prodottoDAO.save(prodottoPerIlCane8);
-//        prodottoDAO.save(prodottoPerIlCane9);
-//        prodottoDAO.save(prodottoPerIlCane10);
-//        prodottoDAO.save(prodottoPerIlCane11);
-//        prodottoDAO.save(prodottoPerIlCane12);
+        prodottoDAO.save(prodottoPerIlCane1);
+        prodottoDAO.save(prodottoPerIlCane2);
+        prodottoDAO.save(prodottoPerIlCane3);
+        prodottoDAO.save(prodottoPerIlCane4);
+        prodottoDAO.save(prodottoPerIlCane5);
+        prodottoDAO.save(prodottoPerIlCane6);
+        prodottoDAO.save(prodottoPerIlCane6);
+        prodottoDAO.save(prodottoPerIlCane7);
+        prodottoDAO.save(prodottoPerIlCane8);
+        prodottoDAO.save(prodottoPerIlCane9);
+        prodottoDAO.save(prodottoPerIlCane10);
+        prodottoDAO.save(prodottoPerIlCane11);
+        prodottoDAO.save(prodottoPerIlCane12);
 
         //CREAZIONE PRODOTTI GATTO
           //TIRAGRAFFIO PER IL GATTO
@@ -82,16 +82,16 @@ public class ProdottoRunner implements CommandLineRunner {
         Prodotto prodottoPerIlGatto8= new Prodotto("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdnyY-9GavfQQdsgp7bSxTvn-f8Rs2HGvQAg&usqp=CAU","tappetino tira Tiragraffi beige","comodo tappetino tiragraffi per il nostro amico gattino",30.00,Categoria.Tiragraffi,TipoAnimale.Gatto);
         Prodotto prodottoPerIlGatto9= new Prodotto("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3L5WbOcwWy8cs0AcjpyMMappTmDzJKNzvPg&usqp=CAU","Tiragraffi ad albero  grigio chiaro","comodo tiragraffi ad albero multper il nostro amico gattino",55.00,Categoria.Tiragraffi,TipoAnimale.Gatto);
         Prodotto prodottoPerIlGatto10= new Prodotto("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7g5OiS0JHQvh_mUNUr3_c1P9sCNPS0gDLRg&usqp=CAU","Tiragraffi in legno","comodo tiragraffi di legno per il nostro amico gattino",119.00,Categoria.Tiragraffi,TipoAnimale.Gatto);
-//        prodottoDAO.save(prodottoPerIlGatto1);
-//        prodottoDAO.save(prodottoPerIlGatto2);
-//        prodottoDAO.save(prodottoPerIlGatto3);
-//        prodottoDAO.save(prodottoPerIlGatto4);
-//        prodottoDAO.save(prodottoPerIlGatto5);
-//        prodottoDAO.save(prodottoPerIlGatto6);
-//        prodottoDAO.save(prodottoPerIlGatto7);
-//        prodottoDAO.save(prodottoPerIlGatto8);
-//        prodottoDAO.save(prodottoPerIlGatto9);
-//        prodottoDAO.save(prodottoPerIlGatto10);
+        prodottoDAO.save(prodottoPerIlGatto1);
+        prodottoDAO.save(prodottoPerIlGatto2);
+        prodottoDAO.save(prodottoPerIlGatto3);
+        prodottoDAO.save(prodottoPerIlGatto4);
+        prodottoDAO.save(prodottoPerIlGatto5);
+        prodottoDAO.save(prodottoPerIlGatto6);
+        prodottoDAO.save(prodottoPerIlGatto7);
+        prodottoDAO.save(prodottoPerIlGatto8);
+        prodottoDAO.save(prodottoPerIlGatto9);
+        prodottoDAO.save(prodottoPerIlGatto10);
 
         //CUCCIE E LETTINI PER IL GATTO
         Prodotto prodottoCucciaGatto1= new Prodotto("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTT_-lMTpI3JvxmF0Jlko61ivMgFCbTiz16LYS4jkJYLcPwEb9qQfASLTkdD2MuXtFb65Q&usqp=CAU","Cuccia per Gatti Da Casa","comoda cuccia per il nostro gattino",20.00,Categoria.CuccieELettini,TipoAnimale.Gatto);
@@ -100,12 +100,12 @@ public class ProdottoRunner implements CommandLineRunner {
         Prodotto prodottoCucciaGatto4= new Prodotto("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSxfi-PznHbi0LzsG98wCUENd8TUZMxVx_rA&usqp=CAU","Cuccia In Legno Con Balconcino per gatti","comoda cuccia in legno per il gatto",90.00,Categoria.CuccieELettini,TipoAnimale.Gatto);
         Prodotto prodottoLettinoGatto1= new Prodotto("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMoJJZE_Ta8EBEkCROknzHo0PwSz4iJg0-7A&usqp=CAU","Lettino Per Gatto","comodo lettino per gatto",58.00,Categoria.CuccieELettini,TipoAnimale.Gatto);
         Prodotto prodottoLettinoGatto2= new Prodotto("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTnF7dHK9PuhFXldZ5GXYHgvfDOonXZkza_Q&usqp=CAU","Lettino Per Gatto Con Cusino In Peluche","comodo lettino per gatto con cusino",50.00,Categoria.CuccieELettini,TipoAnimale.Gatto);
-//       prodottoDAO.save(prodottoCucciaGatto1);
-//       prodottoDAO.save(prodottoCucciaGatto2);
-//       prodottoDAO.save(prodottoCucciaGatto3);
-//       prodottoDAO.save(prodottoCucciaGatto4);
-//       prodottoDAO.save(prodottoLettinoGatto1);
-//       prodottoDAO.save(prodottoLettinoGatto2);
+       prodottoDAO.save(prodottoCucciaGatto1);
+       prodottoDAO.save(prodottoCucciaGatto2);
+       prodottoDAO.save(prodottoCucciaGatto3);
+       prodottoDAO.save(prodottoCucciaGatto4);
+       prodottoDAO.save(prodottoLettinoGatto1);
+       prodottoDAO.save(prodottoLettinoGatto2);
 
 
 
