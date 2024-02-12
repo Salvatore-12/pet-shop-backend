@@ -25,6 +25,7 @@ public class Utente implements UserDetails {
     private String nome;
     private String cognome;
     private String email;
+    private String indirizzo;
     private String password;
     private String avatar;
     @Enumerated(EnumType.STRING)

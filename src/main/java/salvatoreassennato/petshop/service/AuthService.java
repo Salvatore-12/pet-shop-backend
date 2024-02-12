@@ -37,6 +37,9 @@ public class AuthService {
     }
     public Utente save(UtenteDTO body)
     {
+        if (body.indirizzo() == null || body.indirizzo().isEmpty()) {
+            throw new BadRequestException("L'indirizzo è obbligatorio");
+        }
         utenteDao.findByEmail(body.email()).ifPresent(user ->
         {
             throw new BadRequestException("L'email "+ user.getEmail() + " è già in uso");
@@ -46,6 +49,7 @@ public class AuthService {
         newuser.setCognome(body.cognome());
         newuser.setPassword(bcrypt.encode(body.password()));
         newuser.setEmail(body.email());
+        newuser.setIndirizzo(body.indirizzo());
         newuser.setAvatar("ifhewiofofnewofbewofeowbfoiewbf");
         newuser.setRuolo(Ruolo.Utente);
         return utenteDao.save(newuser);

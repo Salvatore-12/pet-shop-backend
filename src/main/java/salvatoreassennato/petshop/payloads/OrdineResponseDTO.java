@@ -10,6 +10,7 @@ public record OrdineResponseDTO(
         String nomeUtente,
         String cognomeUtente,
         String emailUtente,
+        String indirizzo,
         double totaleDaPagare
 ) {
 }

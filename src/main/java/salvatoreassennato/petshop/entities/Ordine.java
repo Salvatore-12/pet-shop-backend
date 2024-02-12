@@ -3,6 +3,7 @@ package salvatoreassennato.petshop.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
 import java.util.UUID;
 @Entity
 @Getter
@@ -20,4 +21,6 @@ public class Ordine {
     @ManyToOne
     @JoinColumn(name="utente_id")
     private Utente utente;
+    @OneToMany(mappedBy = "ordine", cascade = CascadeType.ALL)
+    private List<DettaglioOrdine> dettagliOrdine;
 }

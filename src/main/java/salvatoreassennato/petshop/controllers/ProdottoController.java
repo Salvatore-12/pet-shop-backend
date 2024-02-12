@@ -1,5 +1,6 @@
 package salvatoreassennato.petshop.controllers;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -64,11 +65,11 @@ public class ProdottoController {
     }
 
     @PutMapping("/{id}")
-    public Prodotto updateProdotto(@RequestBody ProdottoDTO body, @PathVariable UUID id, BindingResult validation) {
+    public Prodotto updateProdotto(@ Valid @RequestBody ProdottoDTO body, @PathVariable UUID id, BindingResult validation) {
         if (validation.hasErrors()) {
             throw new BadRequestException(validation.getAllErrors());
         } else {
-            return prodottoService.update(body, id);
+            return prodottoService.update(id, body);
         }
     }
 

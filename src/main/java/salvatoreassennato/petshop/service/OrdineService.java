@@ -34,31 +34,6 @@ public class OrdineService {
     @Autowired
     private CarrelloProdottoDAO carrelloProdottoDAO;
 
-    public OrdineResponseDTO creaOrdine(OrdineDTO ordineDTO) {
-        // Recupero l'utente dal DB
-        Utente utente = utenteDAO.findById(ordineDTO.idUtente())
-                .orElseThrow(() -> new RuntimeException("Utente non trovato con ID: " + ordineDTO.idUtente()));
-        // Recupero il carrello dal DB
-        CarrelloProdotto carrello = carrelloProdottoDAO.findById(ordineDTO.idCarrello())
-                .orElseThrow(() -> new RuntimeException("Carrello non trovato con ID: " + ordineDTO.idCarrello()));
-        // Calcolo il totale dell'ordine basato sui prodotti nel carrello
-        double totaleDaPagare = calcolaTotale(ordineDTO.dettagliOrdine());
-        Ordine ordine = new Ordine();
-        ordine.setUtente(utente);
-        ordine.setCarrelloProdotti(carrello);
-        ordine.setTotaleDaPagare(totaleDaPagare);
-        ordine = ordineDAO.save(ordine);
-        List<ProdottoDTO> dettagliProdotti = retrieveDettagliProdotti(ordineDTO);
-        return new OrdineResponseDTO(
-                ordine.getIdOrdine(), // Utilizza getIdOrdine() invece di getId()
-                dettagliProdotti, // Aggiungi qui i dettagli dei prodotti
-                utente.getId(),
-                utente.getNome(),
-                utente.getCognome(),
-                utente.getEmail(),
-                totaleDaPagare
-        );
-    }
     //Con questo metodo recupero i dettagli dei prodotti associati a un ordine,
     //a partire dai dettagli presenti nell'oggetto OrdineDTO
     private List<ProdottoDTO> retrieveDettagliProdotti(OrdineDTO ordineDTO) {
@@ -79,24 +54,90 @@ public class OrdineService {
         return dettagliProdotti;
     }
 
+    // mi  recupero il prezzo di un prodotto dal DB,
+    // utilizzando l'id del prodotto e restituisce il prezzo
+    // di un prodotto recuperato dal DB;
+    private double retrievePrezzoProdotto(UUID idProdotto) {
+        Prodotto prodotto = prodottoDAO.findById(idProdotto)
+        .orElseThrow(() -> new RuntimeException("Prodotto non trovato con ID: " + idProdotto));
+        return prodotto.getPrezzo();
+    }
+
     private double calcolaTotale(List<DettaglioOrdineDTO> dettagliOrdine) {
         if (dettagliOrdine == null) {
             return 0.0;
         }
-        return dettagliOrdine.stream()
-                .mapToDouble(dettaglio -> {
-                    // mi calcolo il prezzo del prodotto moltiplicato per la quantità
-                    // ed mi sommo i totali di tutti i dettagli
+            return dettagliOrdine.stream()
+                   .mapToDouble(dettaglio -> {
                     return dettaglio.quantità() * retrievePrezzoProdotto(dettaglio.idProdotto());
                 })
-                .sum();
+                   .sum();
+    }
+    public OrdineResponseDTO creaOrdine(OrdineDTO ordineDTO) {
+        // Recupero l'utente dal DB
+        OrdineDTO OrdineDTO = ordineDTO;
+        Utente utente = utenteDAO.findById(ordineDTO.idUtente())
+        .orElseThrow(() -> new RuntimeException("Utente non trovato con ID: " + OrdineDTO.idUtente()));
+        // Recupero il carrello dal DB
+        OrdineDTO OrdineDTO1 = ordineDTO;
+        CarrelloProdotto carrello = carrelloProdottoDAO.findById(ordineDTO.idCarrello())
+        .orElseThrow(() -> new RuntimeException("Carrello non trovato con ID: " + OrdineDTO1.idCarrello()));
+        // Calcolo il totale dell'ordine basato sui prodotti nel carrello
+        double totaleDaPagare = calcolaTotale(ordineDTO.dettagliOrdine());
+        // Aggiunta dell'indirizzo all'ordineDTO
+        String indirizzoUtente = utente.getIndirizzo();
+        ordineDTO = ordineDTO.withIndirizzo(indirizzoUtente);
+        Ordine ordine = new Ordine();
+        ordine.setUtente(utente);
+        ordine.setCarrelloProdotti(carrello);
+        ordine.setTotaleDaPagare(totaleDaPagare);
+        ordine = ordineDAO.save(ordine);
+        List<ProdottoDTO> dettagliProdotti = retrieveDettagliProdotti(ordineDTO);
+        return new OrdineResponseDTO(
+                   ordine.getIdOrdine(),
+                   dettagliProdotti,
+                   utente.getId(),
+                   utente.getNome(),
+                   utente.getCognome(),
+                   utente.getEmail(),
+                   utente.getIndirizzo(),
+                   totaleDaPagare
+        );
     }
 
-    private double retrievePrezzoProdotto(UUID idProdotto) {
-        Prodotto prodotto = prodottoDAO.findById(idProdotto)
-                .orElseThrow(() -> new RuntimeException("Prodotto non trovato con ID: " + idProdotto));
-        // mi  Restituisce il prezzo di un prodotto recuperato dal DB
-        return prodotto.getPrezzo();
-    }
+
+
+
+
+    //2)METODO PER AGGIORNARE L'ORDINE:
+//    public Ordine aggiornaOrdine(UUID idOrdine, OrdineDTO ordineDTO) {
+//
+//        // Recupero l'ordine esistente dal database
+//        Ordine ordineEsistente = ordineDAO.findById(idOrdine)
+//       .orElseThrow(() -> new RuntimeException("Ordine non trovato con ID: " + idOrdine));
+//
+//        // Aggiorno il carrello
+//        CarrelloProdotto nuovoCarrello = carrelloProdottoDAO.findById(ordineDTO.idCarrello())
+//        .orElseThrow(() -> new RuntimeException("Carrello non trovato con ID: " + ordineDTO.idCarrello()));
+//        ordineEsistente.setCarrelloProdotti(nuovoCarrello);
+//
+//        // Aggiorno i dettagli dell'ordine direttamente nell'ordine esistente
+//        List<DettaglioOrdineDTO> nuoviDettagliDTO = new ArrayList<>();
+//        for (DettaglioOrdineDTO dettaglioDTO : ordineDTO.dettagliOrdine()) {
+//            DettaglioOrdineDTO nuovoDettaglioDTO = new DettaglioOrdineDTO(
+//                    dettaglioDTO.idProdotto(),
+//                    dettaglioDTO.quantità()
+//            );
+//            nuoviDettagliDTO.add(nuovoDettaglioDTO);
+//        }
+//        ordineEsistente.setDettagliOrdine(nuoviDettagliDTO);
+//
+//        // Salvo l'ordine aggiornato nel database
+//        Ordine ordineAggiornato = ordineDAO.save(ordineEsistente);
+//
+//        return ordineAggiornato;
+//    }
 }
+
+
 

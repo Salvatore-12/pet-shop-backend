@@ -56,7 +56,7 @@ public class ProdottoService {
     }
 
 
-    public Prodotto findByIdAndUpdate(UUID id, ProdottoDTO body) {
+    public Prodotto update(UUID id, ProdottoDTO body) {
         Prodotto found = this.findById(id);
         found.setImmagine(body.immagine());
         found.setNome(body.nome());
@@ -72,12 +72,9 @@ public class ProdottoService {
         prodottoDAO.delete(found);
     }
 
-    public Prodotto update(ProdottoDTO body, UUID id) {
-        return prodottoDAO.findByIdAndUpdate(id, body);
-    }
 
     public void delete(UUID id) {
-        prodottoDAO.findByIdAndDelete(id);
+        prodottoDAO.deleteById(id);
     }
 //query che mi ritorna tutti i prodotti del gatto in particolare solo i tirigraffi
     public List<Prodotto> getProdottiPerGattoETiragraffi() {

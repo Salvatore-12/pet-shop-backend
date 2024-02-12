@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import salvatoreassennato.petshop.Enum.Ruolo;
 import salvatoreassennato.petshop.entities.Utente;
 import salvatoreassennato.petshop.exceptions.BadRequestException;
 import salvatoreassennato.petshop.payloads.UtenteDTO;
@@ -29,16 +30,30 @@ public class AuthController {
     @ResponseStatus(HttpStatus.CREATED)
     public UtenteResponseDTO createUser(@RequestBody @Validated UtenteDTO newUserPayload, BindingResult validation)
     {
-        System.out.println(validation);
         if (validation.hasErrors())
         {
-            System.out.println(validation.getAllErrors());
             throw new BadRequestException("Ci sono errori nel payload!");
         }
         else
         {
-            Utente newUser = authService.save(newUserPayload);
-            return new UtenteResponseDTO(newUser.getId());
+            String nome = newUserPayload.nome();
+            String cognome = newUserPayload.cognome();
+            String email = newUserPayload.email();
+            String indirizzo = newUserPayload.indirizzo();
+            String password = newUserPayload.password();
+            Ruolo ruolo = newUserPayload.ruolo();
+            String avatar = newUserPayload.avatar();
+
+            Utente newUser = new Utente();
+            newUser.setNome(nome);
+            newUser.setCognome(cognome);
+            newUser.setEmail(email);
+            newUser.setIndirizzo(indirizzo);
+            newUser.setPassword(password);
+            newUser.setRuolo(ruolo);
+            newUser.setAvatar(avatar);
+            Utente utente = authService.save(newUserPayload);
+            return new UtenteResponseDTO(utente.getId());
         }
     }
 }
