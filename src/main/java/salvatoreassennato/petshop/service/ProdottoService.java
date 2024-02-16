@@ -89,8 +89,17 @@ public class ProdottoService {
     public List<Prodotto> getProdottiPerCaneEGuinzaglio() {
         return prodottoDAO.findByCategoriaAndTipoAnimale(Categoria.Guinzaglio, TipoAnimale.Cane);
     }
-    //3)SEZIONE QUERY PER L'UCCELLO
+    public List<Prodotto> getProdottiPerCaneECiotole() {
+        return prodottoDAO.findByCategoriaAndTipoAnimale(Categoria.CiotoleEDistributori, TipoAnimale.Cane);
+    }
 
+    //3)SEZIONE QUERY PER L'UCCELLO
+    public List<Prodotto> getProdottiPerUccelloMangime() {
+        return prodottoDAO.findByCategoriaAndTipoAnimale(Categoria.Mangime, TipoAnimale.Uccello);
+    }
+    public List<Prodotto> getProdottiPerUccelloGabbie() {
+        return prodottoDAO.findByCategoriaAndTipoAnimale(Categoria.Gabbie, TipoAnimale.Uccello);
+    }
     public List<Prodotto> getProdottiByNome(String nome) {
         return prodottoDAO.findByNome(nome);
     }

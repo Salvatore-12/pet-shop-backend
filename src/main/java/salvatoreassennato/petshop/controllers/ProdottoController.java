@@ -3,14 +3,11 @@ package salvatoreassennato.petshop.controllers;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import salvatoreassennato.petshop.Enum.Categoria;
 import salvatoreassennato.petshop.entities.Prodotto;
 import salvatoreassennato.petshop.exceptions.BadRequestException;
-import salvatoreassennato.petshop.exceptions.NotFoundException;
 import salvatoreassennato.petshop.payloads.ProdottoDTO;
 import salvatoreassennato.petshop.service.ProdottoService;
 
@@ -27,7 +24,7 @@ public class ProdottoController {
     public void setProdottoService(ProdottoService prodottoService) {
         this.prodottoService = prodottoService;
     }
-//1)varie endpoint per i  prodotti per i gatti
+//1)VARI ENDPOINT PER I PRODOTTI PER IL GATTO
     //1)TIRAGRAFFI
     @GetMapping("/prodotti-gatto-tiragraffi")
     public List<Prodotto> getProdottiPerGattoETiragraffi() {
@@ -39,13 +36,25 @@ public class ProdottoController {
         return prodottoService.getProdottiPerGattoCuccie();
     }
 
-    //2)varie endpoint per i  prodotti per i cani
+    //2)VARI ENDPOINT PER I PRODOTTI PER IL GATTO
     @GetMapping("/prodotti-cane-guinzagli")
     public List<Prodotto> getProdottiPerIlCaneEIlGuinzaglio() {
         return prodottoService.getProdottiPerCaneEGuinzaglio();
     }
-    //3)varie endpoint per i  prodotti per i uccelli
+    @GetMapping("/prodotti-ciotole")
+    public List<Prodotto> getProdottiPerIlCaneCiotola() {
+        return prodottoService.getProdottiPerCaneECiotole();
+    }
 
+    //3)VARI ENDPOINT PER I PRODOTTI PER IL GATTO
+    @GetMapping("/prodotti-mangime-uccelli")
+    public List<Prodotto> getProdottiPerUccelliConMangime() {
+        return prodottoService.getProdottiPerUccelloMangime();
+    }
+    @GetMapping("/prodotti-gabbie-uccelli")
+    public List<Prodotto> getProdottiPerUccelliConGabbie() {
+        return prodottoService.getProdottiPerUccelloGabbie();
+    }
     @GetMapping("/prodotti-by-nome")
     public List<Prodotto> getProdottiByNome(@RequestParam String nome) {
         return prodottoService.getProdottiByNome(nome);
