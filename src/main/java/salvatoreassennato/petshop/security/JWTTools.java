@@ -1,11 +1,14 @@
 package salvatoreassennato.petshop.security;
 
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import salvatoreassennato.petshop.entities.Utente;
 import salvatoreassennato.petshop.exceptions.UnauthorizedException;
-import org.springframework.beans.factory.annotation.Value;
+
 import java.util.Date;
 
 @Component
@@ -25,7 +28,10 @@ public class JWTTools {
     {
         try
         {
-            Jwts.parser().verifyWith(Keys.hmacShaKeyFor(secret.getBytes())).build();
+        Claims claims= Jwts.parser().verifyWith(Keys.hmacShaKeyFor(secret.getBytes())).build().parseClaimsJws(token).getBody();
+        }
+        catch (ExpiredJwtException ex) {
+            throw ex; // Rilancia l'eccezione
         }
         catch (Exception ex)
         {

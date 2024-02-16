@@ -27,15 +27,24 @@ public class ProdottoController {
     public void setProdottoService(ProdottoService prodottoService) {
         this.prodottoService = prodottoService;
     }
-
+//1)varie endpoint per i  prodotti per i gatti
+    //1)TIRAGRAFFI
     @GetMapping("/prodotti-gatto-tiragraffi")
     public List<Prodotto> getProdottiPerGattoETiragraffi() {
         return prodottoService.getProdottiPerGattoETiragraffi();
     }
+    //2)CucciaELettino Gatto
+    @GetMapping("/cuccie-lettini-gatto")
+    public List<Prodotto> getProdottiPerGattoCuccie() {
+        return prodottoService.getProdottiPerGattoCuccie();
+    }
+
+    //2)varie endpoint per i  prodotti per i cani
     @GetMapping("/prodotti-cane-guinzagli")
     public List<Prodotto> getProdottiPerIlCaneEIlGuinzaglio() {
         return prodottoService.getProdottiPerCaneEGuinzaglio();
     }
+    //3)varie endpoint per i  prodotti per i uccelli
 
     @GetMapping("/prodotti-by-nome")
     public List<Prodotto> getProdottiByNome(@RequestParam String nome) {

@@ -77,13 +77,20 @@ public class ProdottoService {
         prodottoDAO.deleteById(id);
     }
 //query che mi ritorna tutti i prodotti del gatto in particolare solo i tirigraffi
+
+    //1)SEZIONE QUERY PER  IL GATTO
     public List<Prodotto> getProdottiPerGattoETiragraffi() {
         return prodottoDAO.findByCategoriaAndTipoAnimale(Categoria.Tiragraffi, TipoAnimale.Gatto);
     }
-    //query che mi ritorna tutti i prodotti del cane in particolare solo i guinzagli
+    public List<Prodotto> getProdottiPerGattoCuccie() {
+        return prodottoDAO.findByCategoriaAndTipoAnimale(Categoria.CuccieELettini, TipoAnimale.Gatto);
+    }
+    //2)SEZIONE QUERY PER IL CANE
     public List<Prodotto> getProdottiPerCaneEGuinzaglio() {
         return prodottoDAO.findByCategoriaAndTipoAnimale(Categoria.Guinzaglio, TipoAnimale.Cane);
     }
+    //3)SEZIONE QUERY PER L'UCCELLO
+
     public List<Prodotto> getProdottiByNome(String nome) {
         return prodottoDAO.findByNome(nome);
     }
