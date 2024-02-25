@@ -10,6 +10,10 @@ import java.util.Map;
 
 @Configuration
 public class ConfigClaudinary {
+
+//    @Value("${SECRET_STRIPE_KEY}")
+//    private String secretStripeKey;
+
     @Bean
     public Cloudinary uploadImage(@Value("${CLOUDINARY_NAME}") String name,
                                   @Value("${CLOUDINARY_APIKEY}") String apikey,
@@ -20,4 +24,9 @@ public class ConfigClaudinary {
         config.put("api_secret", secret);
         return new Cloudinary(config);
     }
+
+
+//    public void initializeStripe() {
+//        Stripe.apiKey = secretStripeKey;
+//    }
 }
