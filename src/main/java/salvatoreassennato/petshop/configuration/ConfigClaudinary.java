@@ -11,8 +11,7 @@ import java.util.Map;
 @Configuration
 public class ConfigClaudinary {
 
-//    @Value("${SECRET_STRIPE_KEY}")
-//    private String secretStripeKey;
+
 
     @Bean
     public Cloudinary uploadImage(@Value("${CLOUDINARY_NAME}") String name,
@@ -26,7 +25,4 @@ public class ConfigClaudinary {
     }
 
 
-//    public void initializeStripe() {
-//        Stripe.apiKey = secretStripeKey;
-//    }
 }

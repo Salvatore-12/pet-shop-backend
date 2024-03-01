@@ -19,8 +19,6 @@ import java.util.UUID;
 public class ProdottoController {
     @Autowired
     private ProdottoService prodottoService;
-//    @Value("${SECRET_STRIPE_KEY}")
-//    private String secretStripeKey;
 
     @Autowired
     public void setProdottoService(ProdottoService prodottoService) {
@@ -149,29 +147,5 @@ public class ProdottoController {
         return prodottoService.getProdottoById(id);
     }
 
-//    @PostMapping("/create-checkout-session")
-//    public String createCheckoutSession(@RequestBody List<Map<String, Object>> cartItems, @RequestHeader("Authorization") String token) {
-//        try {
-//            // Stampa di debug per verificare il contenuto di cartItems
-//            System.out.println("Contenuto del carrello: " + cartItems);
-//
-//            // Inizializza Stripe con la tua chiave segreta
-//            Stripe.apiKey = secretStripeKey; // Sostituisci con la tua chiave segreta Stripe
-//
-//            // Creazione del body per la richiesta di creazione della sessione di checkout con Stripe
-//            Map<String, Object> params = new HashMap<>();
-//            params.put("payment_method_types", List.of("card"));
-//            params.put("line_items", generateLineItems(cartItems)); // Genera gli oggetti line_items basati sul carrello
-//
-//            // Creazione della sessione di checkout con Stripe
-//            Session session = Session.create(params);
-//
-//            // Ritorna l'ID della sessione di checkout appena creata
-//            return session.getId();
-//        } catch (StripeException e) {
-//            // Gestione delle eccezioni Stripe
-//            e.printStackTrace();
-//            throw new RuntimeException("Errore nella creazione della sessione di checkout");
-//        }
-//    }
+
 }

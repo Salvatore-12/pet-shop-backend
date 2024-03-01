@@ -19,6 +19,7 @@ import salvatoreassennato.petshop.service.UtenteService;
 
 import java.io.IOException;
 import java.util.UUID;
+import java.util.stream.Stream;
 
 @Component
 public class JWTAuthorFilter extends OncePerRequestFilter {
@@ -27,6 +28,7 @@ public class JWTAuthorFilter extends OncePerRequestFilter {
     private JWTTools jwtTools;
     @Autowired
     private UtenteService utenteService;
+    private static final AntPathMatcher pathMatcher = new AntPathMatcher();
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException
     {
@@ -57,6 +59,9 @@ public class JWTAuthorFilter extends OncePerRequestFilter {
 
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
-        return new AntPathMatcher().match("/auth/**",request.getServletPath());
+        String[] allowedPaths = {"/auth/**","/prodotti/**"};
+
+        return Stream.of(allowedPaths)
+                .anyMatch(path -> pathMatcher.match(path, request.getServletPath()));
     }
 }
