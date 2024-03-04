@@ -152,8 +152,7 @@ public class ProdottoRunner implements CommandLineRunner {
         Prodotto prodottoPerIlGatto5= new Prodotto("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxtP2KXB3mX5ltEBnkrE44C-ba6sKw3tgb8Q&usqp=CAU","Tiragraffi a castello grigio ","comodo tiragraffi  a castello per il nostro amico gattino",60.00,Categoria.Tiragraffi,TipoAnimale.Gatto);
         Prodotto prodottoPerIlGatto6= new Prodotto("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1PraeD8UU0gcM77j3zBABP63tGsdg7NRPKpNrnxp4aTt0KBXW_fRr2JG2x0wx0GguALY&usqp=CAU","Tiragraffi di lino ","comodo tiragraffi di lino per il nostro amico gattino",13.00,Categoria.Tiragraffi,TipoAnimale.Gatto);
         Prodotto prodottoPerIlGatto7= new Prodotto("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7Lzt3X1JJnyHQqqZD38PwoQGUT8wnUY6J57i9OF6YliGqDEETNHBSdrNYfiYNsdmE81s&usqp=CAU","Tiragraffi con giochi e tunnel","comodo tiragraffi per il nostro amico gattino",40.00,Categoria.Tiragraffi,TipoAnimale.Gatto);
-        Prodotto prodottoPerIlGatto8= new Prodotto("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMQ4dRs0e3h0TOlb_Qvn2GWBnP5U4dSD-osA&usqp=CAU","tappetino tira Tiragraffi beige","comodo tappetino tiragraffi per il nostro amico gattino",30.00,Categoria.Tiragraffi,TipoAnimale.Gatto);
-        Prodotto prodottoPerIlGatto9= new Prodotto("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3L5WbOcwWy8cs0AcjpyMMappTmDzJKNzvPg&usqp=CAU","Tiragraffi ad albero  grigio chiaro","comodo tiragraffi ad albero multper il nostro amico gattino",55.00,Categoria.Tiragraffi,TipoAnimale.Gatto);
+        Prodotto prodottoPerIlGatto8= new Prodotto("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3L5WbOcwWy8cs0AcjpyMMappTmDzJKNzvPg&usqp=CAU","Tiragraffi ad albero  grigio chiaro","comodo tiragraffi ad albero multper il nostro amico gattino",55.00,Categoria.Tiragraffi,TipoAnimale.Gatto);
         prodottoDAO.save(prodottoPerIlGatto1);
         prodottoDAO.save(prodottoPerIlGatto2);
         prodottoDAO.save(prodottoPerIlGatto3);
@@ -162,7 +161,7 @@ public class ProdottoRunner implements CommandLineRunner {
         prodottoDAO.save(prodottoPerIlGatto6);
         prodottoDAO.save(prodottoPerIlGatto7);
         prodottoDAO.save(prodottoPerIlGatto8);
-        prodottoDAO.save(prodottoPerIlGatto9);
+
 
 
         //CUCCIE E LETTINI PER IL GATTO
@@ -237,11 +236,17 @@ public class ProdottoRunner implements CommandLineRunner {
         Prodotto prododottoGabbia3= new Prodotto("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4m9rIgXc6_KZkFQ2163QJIfygO1ZBNCa_iQ&usqp=CAU","Imac Gabbia Sonia Blu/Bianco","bellissima gabbia blu/bianco,perfetta per canarini, cocorite e uccelli in genere",50.00,Categoria.Gabbie,TipoAnimale.Uccello);
         Prodotto prododottoGabbia4= new Prodotto("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLiTUOKfz6y4gJS1XOmhXtDflPnlBl7fI7fWe6OSz10UVwcYoXNedr621J9BtRkwm3IfA&usqp=CAU","Gabbia Per Ucccelli Blu","bellissima gabbia blu,perfetta per canarini, cocorite e uccelli in genere",35.00,Categoria.Gabbie,TipoAnimale.Uccello);
         Prodotto prododottoGabbia5= new Prodotto("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYuPiJHspa4I72Ysbm5GiGsFrMQxcSTT8IcA&usqp=CAU","Gabbia Per Ucccelli Gialla","bellissima gabbia gialla,perfetta per canarini, cocorite e uccelli in genere",23.99,Categoria.Gabbie,TipoAnimale.Uccello);
+        Prodotto prododottoGabbia6= new Prodotto("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTu7Z6DvQsp0qi8WhtiOQJ3LivvRVZyAWlsFw&usqp=CAU","Gabbia Bergamo Arquivet. Gabbia Per Uccelli","bellissima gabbia bergamo arquivet,perfetta per canarini, cocorite e uccelli in genere",30.00,Categoria.Gabbie,TipoAnimale.Uccello);
+        Prodotto prododottoGabbia7= new Prodotto("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4sewYSmin6LSpTXyetfFVkRrM78eq2BvKiQ&usqp=CAU","Gabbia Per Uccelli In Acciaio Con Posatoi, Vassoio Rimovibile E Maniglia,","bellissima gabbia in acciaio,perfetta per canarini, cocorite e uccelli in genere",32.00,Categoria.Gabbie,TipoAnimale.Uccello);
+        Prodotto prododottoGabbia8= new Prodotto("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc30WA9eVll-JEmIdlhkkzBMpQShLbp53yKw&usqp=CAU","Gabbia Per Ucccelli Grigia","bellissima gabbia grigia,perfetta per canarini, cocorite e uccelli in genere",60.00,Categoria.Gabbie,TipoAnimale.Uccello);
          prodottoDAO.save(prododottoGabbia1);
          prodottoDAO.save(prododottoGabbia2);
          prodottoDAO.save(prododottoGabbia3);
          prodottoDAO.save(prododottoGabbia4);
          prodottoDAO.save(prododottoGabbia5);
+         prodottoDAO.save(prododottoGabbia6);
+         prodottoDAO.save(prododottoGabbia7);
+         prodottoDAO.save(prododottoGabbia8);
 
         //ACCESSORI GABBIE PER UCCELLO
         Prodotto accessoriGabbie1 = new Prodotto("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5JhmAFoc79TAHbRbdcFN_4dkHNtMmGblhWg&usqp=CAU","BRAVA 2 Ferplast Mangiatoia rotante uccelli ","mangiatoia rotante  gabbie  per piccoli uccelli",9.99,Categoria.AccessoriPerGabbie,TipoAnimale.Uccello);
