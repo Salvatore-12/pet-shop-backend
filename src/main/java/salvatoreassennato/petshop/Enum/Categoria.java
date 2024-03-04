@@ -3,7 +3,7 @@ package salvatoreassennato.petshop.Enum;
 public enum Categoria {
     Abbigliamento_cane,
     Guinzaglio,
-    Cibo_Secco,
+    Crocchette,
     Cibo_umido,
     Mangime,
     Giochi,

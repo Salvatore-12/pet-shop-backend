@@ -15,12 +15,12 @@ public class Ordine {
     @Id
     @GeneratedValue
     private UUID idOrdine;
-    @OneToOne(mappedBy="ordine")
-    private CarrelloProdotto carrelloProdotti;
     private double totaleDaPagare;
     @ManyToOne
     @JoinColumn(name="utente_id")
     private Utente utente;
-    @OneToMany(mappedBy = "ordine", cascade = CascadeType.ALL)
-    private List<DettaglioOrdine> dettagliOrdine;
+    @ManyToMany
+    @JoinTable(name="ordine_prodotto",joinColumns = @JoinColumn(name="ordine_id"),inverseJoinColumns = @JoinColumn(name="prodotto_id"))
+    private List<Prodotto> dettagliOrdine;
+
 }

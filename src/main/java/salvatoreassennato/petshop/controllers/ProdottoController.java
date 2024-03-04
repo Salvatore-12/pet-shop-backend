@@ -3,14 +3,11 @@ package salvatoreassennato.petshop.controllers;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import salvatoreassennato.petshop.Enum.Categoria;
 import salvatoreassennato.petshop.entities.Prodotto;
 import salvatoreassennato.petshop.exceptions.BadRequestException;
-import salvatoreassennato.petshop.exceptions.NotFoundException;
 import salvatoreassennato.petshop.payloads.ProdottoDTO;
 import salvatoreassennato.petshop.service.ProdottoService;
 
@@ -27,14 +24,80 @@ public class ProdottoController {
     public void setProdottoService(ProdottoService prodottoService) {
         this.prodottoService = prodottoService;
     }
-
+//1)VARI ENDPOINT PER I PRODOTTI PER IL GATTO
+    //1)TIRAGRAFFI
     @GetMapping("/prodotti-gatto-tiragraffi")
     public List<Prodotto> getProdottiPerGattoETiragraffi() {
         return prodottoService.getProdottiPerGattoETiragraffi();
     }
+    //2)CucciaELettino Gatto
+    @GetMapping("/cuccie-lettini-gatto")
+    public List<Prodotto> getProdottiPerGattoCuccie() {
+        return prodottoService.getProdottiPerGattoCuccie();
+    }
+    //3)GIOCHI PER GATTO
+    @GetMapping("/giochi-gatto")
+    public List<Prodotto> getProdottiPerGattoGiochi() {
+        return prodottoService.getProdottiPerGattoGiochi();
+    }
+    //4)CROCCHETTE GATTO
+    @GetMapping("/crocchette-gatto")
+    public List<Prodotto> getProdottiPerGattoCrocchette() {
+        return prodottoService.getProdottiPerGattoCrocchette();
+    }
+    //5)CIBO UMIDO GATTO
+    @GetMapping("/cibo-umido-gatto")
+    public List<Prodotto> getProdottiPerGattoCiboUmido() {
+        return prodottoService.getProdottiPerGattoCiboUmido();
+    }
+    //6)CIOTOLE PER GATTO
+    @GetMapping("/ciotole-gatto")
+    public List<Prodotto> getProdottiPerGattoCiotole() {
+        return prodottoService.getProdottiPerGattoCiotole();
+    }
+
+    //2)VARI ENDPOINT PER I PRODOTTI PER IL CANE
     @GetMapping("/prodotti-cane-guinzagli")
     public List<Prodotto> getProdottiPerIlCaneEIlGuinzaglio() {
         return prodottoService.getProdottiPerCaneEGuinzaglio();
+    }
+    @GetMapping("/ciotole_per-cane")
+    public List<Prodotto> getProdottiPerIlCaneCiotola() {
+        return prodottoService.getProdottiPerCaneECiotole();
+    }
+    @GetMapping("/crocchette_cane")
+    public List<Prodotto> getProdottiPerIlCaneCrocchette() {
+        return prodottoService.getProdottiPerCaneCrocchette();
+    }
+    @GetMapping("/cibo_umido-cane")
+    public List<Prodotto> getProdottiPerIlCaneCiboUmido() {
+        return prodottoService.getProdottiPerCaneCiboUmido();
+    }
+    @GetMapping("/giochi-per-cane")
+    public List<Prodotto> getProdottiPerIlCaneGiochi() {
+        return prodottoService.getProdottiPerCaneEGiochi();
+    }
+    @GetMapping("/cuccie-lettini-cane")
+    public List<Prodotto> getProdottiPerIlCaneCuccieLettini() {
+        return prodottoService.getProdottiPerCaneCuccieELettini();
+    }
+    @GetMapping("/abbigliamento-cane")
+    public List<Prodotto> getProdottiPerIlCaneAbbigliamento() {
+        return prodottoService.getProdottiPerCaneAbbigliamento();
+    }
+
+    //3)VARI ENDPOINT PER I PRODOTTI PER UCCELLO
+    @GetMapping("/mangime-uccelli")
+    public List<Prodotto> getProdottiPerUccelliConMangime() {
+        return prodottoService.getProdottiPerUccelloMangime();
+    }
+    @GetMapping("/prodotti-gabbie-uccelli")
+    public List<Prodotto> getProdottiPerUccelliConGabbie() {
+        return prodottoService.getProdottiPerUccelloGabbie();
+    }
+    @GetMapping("/Accessori-gabbie-uccelli")
+    public List<Prodotto> getProdottiPerUccelliAccessoriGabbie() {
+        return prodottoService.getProdottiPerUccelloAccessoriPerGabbie();
     }
 
     @GetMapping("/prodotti-by-nome")
@@ -79,8 +142,10 @@ public class ProdottoController {
     public void deleteProdotto(@PathVariable UUID id) {
         prodottoService.delete(id);
     }
-
-
+    @GetMapping("/{id}")
+    public ProdottoDTO getProdottoById(@PathVariable UUID id) {
+        return prodottoService.getProdottoById(id);
+    }
 
 
 }
