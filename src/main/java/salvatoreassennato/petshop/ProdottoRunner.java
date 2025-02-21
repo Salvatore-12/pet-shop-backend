@@ -24,7 +24,7 @@ public class ProdottoRunner implements CommandLineRunner {
         Scanner scanner = new Scanner(System.in);
         boolean errors = false;
         do {
-            System.out.println("Vuoi procedere con la creazione dei vari prodotti? (y/n)");
+            System.out.println("Vuoi procedere con la creazione dei prodotti? (y/n)");
             String choice = scanner.nextLine();
             switch (choice.toLowerCase()) {
                 case "y" -> {
